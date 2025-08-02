@@ -10,6 +10,7 @@
 
   <!-- Font Awesome (optional) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+ <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
 
   <style>
     body {
@@ -59,6 +60,11 @@
     .section.active {
       display: block;
     }
+    .dish{
+      display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+    }
 
     .dish-card {
       background-color: #1e293b;
@@ -89,12 +95,12 @@
       <a href="/customer_logout" class="nav-button">Logout</a>
     </div>
   </div>
-
+  <h2 style="padding-left: 30px;">Available Dishes</h2>
   <div id="menu" class="section active">
-    <h2>Available Dishes</h2>
+    <div class="dish">
     {% for dish in dishes %}
       <div class="dish-card">
-        <img src="{{ url_for('static', filename='uploads/' + dish['image_filename']) }}" />
+        <img src="{{ url_for('uploaded_file', filename=dish['image_filename']) }}">
         <h3>{{ dish['name'] }}</h3>
         <p>{{ dish['description'] }}</p>
         <p><strong>Price:</strong> ₹{{ dish['price'] }}</p>
@@ -103,6 +109,7 @@
         <a href="/place_order/{{ dish['id'] }}">Order Now</a>
       </div>
     {% endfor %}
+    </div>
   </div>
 
   <div id="orders" class="section">

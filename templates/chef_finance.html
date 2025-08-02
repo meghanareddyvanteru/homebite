@@ -1,0 +1,32 @@
+{% extends "chef_template.html" %}
+{% block title %}Finance{% endblock %}
+
+{% block content %}
+<h2>Chef Earnings</h2>
+<h3>Total Earnings: ₹{{ total }}</h3>
+
+{% if orders %}
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Dish</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Customer</th>
+        <th>Timestamp</th>
+    </tr>
+    {% for row in orders %}
+    <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>₹{{ row[2] }}</td>
+        <td>₹{{ row[3] }}</td>
+        <td>{{ row[4] }}</td>
+        <td>{{ row[5] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No completed orders yet.</p>
+{% endif %}
+{% endblock %}

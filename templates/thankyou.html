@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Thankyou</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+
 </head>
 <body>
+    <div style="text-align: center;">
     <h2>Thankyou for placing order</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <!-- You can show them if you like -->
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
     <a href="/">Redirect to home page</a>
+    </div>
 </body>
 </html>

@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = '1234ab'
 
 
-UPLOAD_FOLDER = 'static/uploads'
+UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -310,6 +310,38 @@ def customer_logout():
 @app.route('/thank_you')
 def thank_you():
     return render_template('thankyou.html')
+from flask import send_from_directory
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+@app.route('/chef/finance')
+def chef_finance():
+    if 'chef_id' not in session:
+        return redirect('/chef/login')
+
+    chef_id = session['chef_id']
+    conn = sqlite3.connect('database.db')
+    c = conn.cursor()
+
+    # Get all completed orders linked to this chef
+    c.execute('''
+        SELECT d.name, o.quantity, d.price, (o.quantity * d.price) AS total,
+               o.customer_name, o.timestamp
+        FROM orders o
+        JOIN dishes d ON o.dish_id = d.id
+        WHERE d.chef_id = ? AND o.status = 'Completed'
+    ''', (chef_id,))
+    rows = c.fetchall()
+
+    total_earnings = sum(row[3] for row in rows)
+    conn.close()
+
+    return render_template('chef_finance.html', orders=rows, total=total_earnings)
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

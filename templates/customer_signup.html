@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <title>Customer Signup</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+
     <style>
         body {
             background-color: #3d7af4;
@@ -17,11 +20,28 @@
             padding: 30px;
             border-radius: 10px;
             width: 300px;
+            text-align: center;
         }
         .box h2 {
             text-align: center;
         }
         .error { color: red; text-align: center; }
+        input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 250px; /* Increase width */
+    height: 15px; /* Increase height */
+    margin-bottom: 15px; /* Add gap between fields */
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    font-size: 1em;
+}
+button{
+    width: 100px;
+    height: 30px;
+    font-size: medium;
+}
     </style>
 </head>
 <body>
@@ -33,7 +53,8 @@
             <input type="text" name="name" placeholder="Enter Name" required>
             <input type="email" name="email" placeholder="Enter Email" required>
             <input type="password" name="password" placeholder="Enter Password" required>
-            <button type="submit">Sign Up</button>
+            <br></br>
+            <button type="submit" >Sign Up</button>
         </form>
         <p>Already have an account? <a href="/customer_login">Login</a></p>
     </div>

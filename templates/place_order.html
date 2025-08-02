@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
-{% block title %}Sign Up{% endblock %}
+{% block title %}Orders{% endblock %}
 {% block content %}
-<h2>Order: {{ dish['name'] }}</h2>
+<h1 style="text-align: center;">Order</h1>
+<h2 style="text-align: center;">{{ dish['name'] }}</h2>
+<div style="padding-left: 33%; margin-top: 15px; ">
 <form id="payment-form" method="POST">
-  <input type="text" name="name" placeholder="Recipient Name" required><br>
-  <input type="email" name="email" placeholder="Recipient Email" required><br>
-  <input type="text" name="address" placeholder="Delivery Address" required><br>
-  <input type="text" name="phone" placeholder="Recipient Phone Number" required><br>
-
+  <label>Recipient Name</label>
+  <input type="text" name="name"  style="margin-bottom: 15px; margin-left: 10px; height: 30px; "><br>
+  <label>Recipient Email</label>
+  <input type="email" name="email" style="margin-bottom: 15px; margin-left: 10px; height: 30px; " required><br>
+  <label>Delivery Address</label>
+  <input type="text" name="address"  style="margin-bottom: 15px; margin-left: 10px; height: 30px; "required><br>
+  <label>Recipient Phone Number</label>
+  <input type="text" name="phone" style="margin-bottom: 15px; margin-left: 10px; height: 30px; " required><br>
   <label for="quantity">Quantity:</label>
-  <input type="number" name="quantity" min="1" value="1" required><br>
-
+  <input type="number" name="quantity" min="1" value="1"style="margin-bottom: 15px; margin-left: 10px; height: 30px; " required><br>
   <button id="submit-button" type="submit">Place Order & Pay</button>
 </form>
+</div>
 {% endblock %}

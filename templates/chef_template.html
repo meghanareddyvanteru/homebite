@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
 
     <style>
         body {
@@ -109,8 +110,8 @@
         <li onclick="location.href='/chef/manage-orders'">
             <i class="fas fa-receipt"></i> View & Manage Orders
         </li>
-        <li onclick="location.href='#'">
-            <i class="fas fa-ban"></i> Mark Dishes Unavailable
+        <li onclick="location.href='/chef/finance'">
+            <i class="fas fa-chart-line"></i> Finance
         </li>
     </ul>
 </div>

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HomeBite</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+
 </head>
 <body>
   <header class="hero">
@@ -12,7 +14,7 @@
       <div class="logo">🍲 HomeBite</div>
       <ul class="nav-links">
         <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="/about">About</a></li>
         <li><a href="/menu">Menu</a></li>
         <li><a href="/customer_signup">Create Customer Account</a></li>
         <li><a href="/chef/signup" class="order-btn">Create Chef Account</a></li>

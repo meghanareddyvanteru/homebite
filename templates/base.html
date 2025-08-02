@@ -13,6 +13,8 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+
 
   <style>
     body {
@@ -31,6 +33,22 @@
     input, button, textarea {
       font-family: inherit;
     }
+    .dish-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* center align */
+  margin-top: 20px;
+}
+
+.dish-card {
+  
+  padding: 15px;
+  width: 240px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
   </style>
 </head>
 <body>

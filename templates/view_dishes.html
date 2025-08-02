@@ -5,8 +5,10 @@
 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
     {% for dish in dishes %}
     <div style="background: #fff2e9; border-radius: 10px; padding: 15px; color: black;">
-        <img src="{{ url_for('static', filename='uploads/' + dish['image_filename']) }}" alt="Dish Image" style="width: 100%; border-radius: 10px;">
-        <h3>{{ dish['name'] }}</h3>
+<!-- NEW -->
+<img src="{{ url_for('uploaded_file', filename=dish['image_filename']) }}"
+ alt="Dish Image" style="width: 100%; border-radius: 10px;">
+<h3>{{ dish['name'] }}</h3>
         <p>{{ dish['description'] }}</p>
         <p><strong>Price:</strong> ₹{{ dish['price'] }}</p>
         <p><strong>Prep Time:</strong> {{ dish['prep_time'] }}</p>
