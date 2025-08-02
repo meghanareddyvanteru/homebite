@@ -1,0 +1,143 @@
+body.signup-body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #0f172a;
+    color: #fff;
+}
+
+.signup-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 80px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.signup-info {
+    max-width: 50%;
+}
+
+.signup-info h1 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.signup-info .highlight {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.signup-info p {
+    font-size: 1rem;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+}
+
+.signup-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-light {
+    background: transparent;
+    border: 1px solid #3b82f6;
+    color: #3b82f6;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #3b82f6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.signup-form {
+    background: #1e293b;
+    padding: 40px;
+    border-radius: 20px;
+    width: 400px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.signup-form h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.signup-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form input {
+    background: #334155;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    color: white;
+    font-size: 1rem;
+}
+
+.signup-form input::placeholder {
+    color: #94a3b8;
+}
+
+.login-link {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.login-link a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.btn-submit {
+    background: #3b82f6;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: #2563eb;
+}
+.form-flash {
+    margin-bottom: 12px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.form-flash.success {
+    background-color: #2ecc71;
+}
+
+.form-flash.danger {
+    background-color: #e74c3c;
+}
+
+.form-flash.info {
+    background-color: #3498db;
+}
+.content {
+    flex: 1;
+    padding: 0;
+    overflow-y: auto;
+    height: 100%;
+}
+
+

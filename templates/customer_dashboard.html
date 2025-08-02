@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Dashboard</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome (optional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #1e293b;
+    }
+
+    .navbar-left {
+      font-size: 1.2rem;
+    }
+
+    .navbar-right {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .nav-button {
+      background-color: transparent;
+      color: #cbd5e1;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .nav-button.active {
+      border-bottom: 3px solid #38bdf8;
+      color: #38bdf8;
+    }
+
+    .section {
+      display: none;
+      padding: 2rem;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .dish-card {
+      background-color: #1e293b;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+    }
+
+    .dish-card img {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-left">Hi, {{ session['customer_name'] }} 👋</div>
+    <div class="navbar-right">
+      <button class="nav-button active" onclick="showSection('menu', event)">Menu</button>
+      <button class="nav-button" onclick="showSection('orders', event)">Order History</button>
+      <a href="/customer_logout" class="nav-button">Logout</a>
+    </div>
+  </div>
+
+  <div id="menu" class="section active">
+    <h2>Available Dishes</h2>
+    {% for dish in dishes %}
+      <div class="dish-card">
+        <img src="{{ url_for('static', filename='uploads/' + dish['image_filename']) }}" />
+        <h3>{{ dish['name'] }}</h3>
+        <p>{{ dish['description'] }}</p>
+        <p><strong>Price:</strong> ₹{{ dish['price'] }}</p>
+        <p><strong>Prep Time:</strong> {{ dish['prep_time'] }}</p>
+        <p><strong>Chef:</strong> {{ dish['chef_name'] }}</p>
+        <a href="/place_order/{{ dish['id'] }}">Order Now</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div id="orders" class="section">
+    <h2>Your Orders</h2>
+    {% if orders %}
+      {% for order in orders %}
+        <div class="dish-card">
+          <h3>{{ order['dish_name'] }}</h3>
+          <p><strong>Chef:</strong> {{ order['chef_name'] }}</p>
+          <p><strong>Ordered On:</strong> {{ order['timestamp'] }}</p>
+          <p><strong>Status:</strong> {{ order['status'] }}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>You haven't placed any orders yet.</p>
+    {% endif %}
+  </div>
+
+  <script>
+    function showSection(id,event) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
+
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

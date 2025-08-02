@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Customer Signup</title>
+    <style>
+        body {
+            background-color: #3d7af4;
+            font-family: sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+        }
+        .box h2 {
+            text-align: center;
+        }
+        .error { color: red; text-align: center; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box">
+        <h2>Signup</h2>
+        {% if error %}<p class="error">{{ error }}</p>{% endif %}
+        <form method="POST" action="/customer_signup">
+            <input type="text" name="name" placeholder="Enter Name" required>
+            <input type="email" name="email" placeholder="Enter Email" required>
+            <input type="password" name="password" placeholder="Enter Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="/customer_login">Login</a></p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'chef_template.html' %}
+
+{% block content %}
+<h2>Your Uploaded Dishes</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+    {% for dish in dishes %}
+    <div style="background: #fff2e9; border-radius: 10px; padding: 15px; color: black;">
+        <img src="{{ url_for('static', filename='uploads/' + dish['image_filename']) }}" alt="Dish Image" style="width: 100%; border-radius: 10px;">
+        <h3>{{ dish['name'] }}</h3>
+        <p>{{ dish['description'] }}</p>
+        <p><strong>Price:</strong> ₹{{ dish['price'] }}</p>
+        <p><strong>Prep Time:</strong> {{ dish['prep_time'] }}</p>
+
+        <!-- Availability status -->
+        {% if dish['available'] == 1 %}
+            <p><strong>Status:</strong> <span style="color: green;">Available</span></p>
+        {% else %}
+            <p><strong>Status:</strong> <span style="color: red;">Unavailable</span></p>
+        {% endif %}
+
+        <!-- Availability buttons -->
+        {% if dish['available'] == 1 %}
+            <form action="{{ url_for('mark_unavailable', dish_id=dish['id']) }}" method="POST">
+                <button type="submit" style="background-color: red; color: white;">Mark as Unavailable</button>
+            </form>
+        {% else %}
+            <form action="{{ url_for('mark_available', dish_id=dish['id']) }}" method="POST">
+                <button type="submit" style="background-color: green; color: white;">Mark as Available</button>
+            </form>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

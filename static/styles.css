@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+  }
+  
+  /* Hero background */
+  .hero {
+    position: relative;
+    height: 100vh;
+    background: url('Screenshot 2025-04-18 222226.png') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+    color: white;
+    overflow: hidden;
+  }
+  
+  /* Black overlay */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2); /* darker = closer to 1 */
+    z-index: -1;
+  }
+  
+  /* Navbar and content stay above overlay */
+  .navbar, .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .order-btn {
+    border: 1px solid white;
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  
+  /* Hero content */
+  .hero-content {
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: 5rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+  }
+  
+  .cta-btn {
+    background-color: #ff6600;
+    padding: 12px 24px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 3rem;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<h2>Order: {{ dish['name'] }}</h2>
+<form id="payment-form" method="POST">
+  <input type="text" name="name" placeholder="Recipient Name" required><br>
+  <input type="email" name="email" placeholder="Recipient Email" required><br>
+  <input type="text" name="address" placeholder="Delivery Address" required><br>
+  <input type="text" name="phone" placeholder="Recipient Phone Number" required><br>
+
+  <label for="quantity">Quantity:</label>
+  <input type="number" name="quantity" min="1" value="1" required><br>
+
+  <button id="submit-button" type="submit">Place Order & Pay</button>
+</form>
+{% endblock %}

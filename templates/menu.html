@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+  <!-- Your page content here -->
+<h2>Available Dishes</h2>
+{% for dish in dishes %}
+  <div class="dish-card">
+    <img src="{{ url_for('static', filename='uploads/' + dish['image_filename']) }}" width="200">
+    <h3>{{ dish['name'] }}</h3>
+    <p>{{ dish['description'] }}</p>
+    <p><strong>Price:</strong> ₹{{ dish['price'] }}</p>
+    <p><strong>Prep Time:</strong> {{ dish['prep_time'] }}</p>
+    <p><strong>Chef:</strong> {{ dish['chef_name'] }}</p>
+    <a href="/place_order/{{ dish['id'] }}">Order Now</a>
+  </div>
+{% endfor %}
+{% endblock %}

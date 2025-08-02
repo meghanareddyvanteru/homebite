@@ -1,0 +1,23 @@
+{% extends 'chef_template.html' %}
+
+{% block content %}
+<h2 style="text-align: center;">Upload a New Dish</h2>
+<div style="padding-left: 33%;">
+<form id="dishForm" method="POST" enctype="multipart/form-data">
+    <label style="padding-right: 20px;">Dish Name</label>
+    <input type="text" name="name" style="border-radius: 5.5px;" required><br><br>
+    <label>Dish Description</label>
+    <br></br>
+    <textarea name="description" rows="4" cols="50" style="border-radius: 5.5px;"></textarea><br><br>
+    <label style="padding-right: 15px;">Price ₹ </label>
+    <input type="number" step="0.01" name="price" style="border-radius: 5.5px;" required><br><br>
+    <label>Preparation Time (e.g., 30 mins)</label><br></br>
+    <input type="text" name="prep_time" style="border-radius: 5.5px;" required><br><br>
+    <label>Upload Image</label><br></br>
+    <input type="file" name="image" accept="image/*" style="border-radius: 5.5px;" required><br><br>
+    </form>
+    </div>
+    <div class="btn-container" style="text-align: center;">
+    <button type="submit" form="dishForm" class="btn-submit" >Upload Dish</button>
+    </div>
+{% endblock %}

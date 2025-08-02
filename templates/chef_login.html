@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chef Login - HomeBite</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="signup-body">
+    <div class="signup-container">
+        <div class="signup-info">
+            <h3>WELCOME BACK</h3>
+            <h1>Serve your <span class="highlight">delicious dishes</span><br>Connect with your Customers</h1>
+            <p>Login to your chef account to manage and upload your home-cooked meals.</p>
+            <div class="signup-buttons">
+                <button class="btn-light" onclick="window.location.href='/'">Explore</button>
+                <button class="btn-primary" onclick="window.location.href='/chef/signup'">Create Account</button>
+            </div>
+        </div>
+        <div class="signup-form">
+            <h2>Welcome<br><strong>back chef.</strong></h2>
+            <form method="POST">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="form-flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <p class="login-link">New here? <a href="/chef/signup">Create Account</a></p>
+                <button type="submit" class="btn-submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

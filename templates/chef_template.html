@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chef Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #fff;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e293b;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .topbar .brand {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .topbar .logout-button {
+            background-color: #334155;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .topbar .logout-button:hover {
+            background-color: #475569;
+        }
+
+        .layout {
+            display: flex;
+            height: calc(100vh - 50px);
+        }
+
+        .sidebar {
+    width: 230px;
+    background-color: #1c1c1c;
+    padding-top: 20px;
+    height: 100%;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.sidebar li:hover {
+    background-color: #334155;
+}
+
+.sidebar i {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+}
+
+
+        .content {
+            flex: 1;
+            padding: 0;
+            overflow-y: auto;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="brand">HomeBite</div>
+        <a class="logout-button" href="/logout">Logout</a>
+    </div>
+
+    <div class="layout">
+        <div class="sidebar">
+    <ul>
+        <li onclick="location.href='/chef/upload'">
+            <i class="fas fa-upload"></i> Upload Dishes
+        </li>
+        <li onclick="location.href='/chef/dishes'">
+            <i class="fas fa-utensils"></i> Available Dishes
+        </li>
+        <li onclick="location.href='/chef/manage-orders'">
+            <i class="fas fa-receipt"></i> View & Manage Orders
+        </li>
+        <li onclick="location.href='#'">
+            <i class="fas fa-ban"></i> Mark Dishes Unavailable
+        </li>
+    </ul>
+</div>
+
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>
