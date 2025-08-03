@@ -2,6 +2,16 @@
 
 {% block content %}
 <h2 style="text-align: center;">Upload a New Dish</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="flash-message {{ category }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
 <div style="padding-left: 33%;">
 <form id="dishForm" method="POST" enctype="multipart/form-data">
     <label style="padding-right: 20px;">Dish Name</label>

@@ -49,6 +49,7 @@ button{
     <div class="box">
         <h2>Signup</h2>
         {% if error %}<p class="error">{{ error }}</p>{% endif %}
+        
         <form method="POST" action="/customer_signup">
             <input type="text" name="name" placeholder="Enter Name" required>
             <input type="email" name="email" placeholder="Enter Email" required>

@@ -29,8 +29,6 @@ CREATE TABLE IF NOT EXISTS dishes (
 )
 ''')
 print("Dishes table created.")
-
-# Recreate it with updated schema
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS orders (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

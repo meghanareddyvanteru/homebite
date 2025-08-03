@@ -33,7 +33,6 @@ def chef_signup():
         try:
             c.execute("INSERT INTO chefs (name, email, password) VALUES (?, ?, ?)", (name, email, password))
             conn.commit()
-            flash("Signup successful! Please log in.", "success")
             return redirect('/chef/login')
         except:
             flash("Email already exists.", "danger")
@@ -54,7 +53,6 @@ def chef_login():
 
         if chef and check_password_hash(chef[3], password):
             session['chef_id'] = chef[0]
-            flash("Login successful!", "success")
             return redirect('/chef/dashboard')
         else:
             flash("Invalid email or password.", "danger")
@@ -98,7 +96,7 @@ def upload_dish():
             ''', (session['chef_id'], name, description, price, prep_time, image_filename))
             conn.commit()
             conn.close()
-
+            flash("Dish uploaded successfully!", "success")
             return redirect('/chef/upload')
         else:
             flash("Invalid image file. Please upload a PNG, JPG, JPEG, or GIF.", "danger")
@@ -180,8 +178,6 @@ def manage_orders():
     chef_id = session['chef_id']
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
-
-    # Fetch pending orders
     c.execute('''
         SELECT orders.id, orders.customer_name, orders.customer_email,
                orders.quantity, orders.status, dishes.name as dish_name
@@ -190,8 +186,6 @@ def manage_orders():
         WHERE dishes.chef_id = ? AND orders.status != 'Completed'
     ''', (chef_id,))
     pending_orders = c.fetchall()
-
-    # Fetch completed orders
     c.execute('''
         SELECT orders.id, orders.customer_name, orders.customer_email,
                orders.quantity, orders.status, dishes.name as dish_name
@@ -323,8 +317,6 @@ def chef_finance():
     chef_id = session['chef_id']
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
-
-    # Get all completed orders linked to this chef
     c.execute('''
         SELECT d.name, o.quantity, d.price, (o.quantity * d.price) AS total,
                o.customer_name, o.timestamp
@@ -341,8 +333,6 @@ def chef_finance():
 @app.route('/about')
 def about():
     return render_template('about.html')
-
-
 if __name__ == '__main__':
     app.run(debug=True)
 
