@@ -64,5 +64,13 @@ button{
         <p>Return to Home Page? <a href="/">Click</a></p>
     </div>
 </div>
+<script>
+    setTimeout(() => {
+        const flashes = document.querySelectorAll(".flash");
+        flashes.forEach(flash => {
+            flash.style.display = "none";
+        });
+    }, 3000); 
+</script>
 </body>
 </html>
